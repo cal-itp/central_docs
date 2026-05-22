@@ -11,8 +11,6 @@ confidence: medium
 contested: true
 ---
 
-# GTFS Realtime Data Quality
-
 ## Owner
 [[evan-siroky]]
 

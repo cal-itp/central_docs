@@ -10,8 +10,6 @@ sources: [raw/specs/california-transit-database-original.md, raw/issues/data-inf
 confidence: high
 ---
 
-# California Transit Database
-
 ## Owner
 [[evan-siroky]]
 

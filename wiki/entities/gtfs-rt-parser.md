@@ -10,8 +10,6 @@ sources: [raw/articles/v2-warehouse-architecture-rt-data.md, raw/articles/gtfs-r
 confidence: medium
 ---
 
-# GTFS-RT Parser
-
 ## Owner
 (TBD — built and operated through the Caltrans contractor transition by Ministry
 of Velocity and Jarvus; no named DDS steward yet. Related: [[gtfs-rt-archiver]] #5109.)

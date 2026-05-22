@@ -8,6 +8,8 @@ vendors, contracts, and the frameworks that govern them.
 ## Conventions
 - File names: lowercase, hyphens, no spaces (e.g., `gtfs-rt-archiver.md`)
 - Every wiki page starts with YAML frontmatter
+- Do not add an H1 (`# Title`) to the page body — Quartz renders the frontmatter
+  `title` as the page heading. Start the body with the first `##` section.
 - Use `[[wikilinks]]` to link between pages (minimum 2 outbound links per page)
 - When updating a page, always bump the `updated` date
 - `index.md` is generated — never edit it by hand; run `npm run index` (or

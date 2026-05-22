@@ -78,6 +78,13 @@ for (const page of pages) {
     }
   }
 
+  // --- No body H1 (Quartz renders the frontmatter title as the heading) ---
+  const firstBodyLine = page.body.split('\n').find((l) => l.trim() !== '');
+  if (firstBodyLine && /^#\s/.test(firstBodyLine)) {
+    err(id, 'body starts with an H1 heading — Quartz already renders the '
+      + 'frontmatter title; remove the `# ...` line');
+  }
+
   // --- Wikilink validation ---
   const outbound = new Set();
   for (const target of page.links) {
