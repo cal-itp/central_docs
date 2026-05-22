@@ -10,8 +10,6 @@ sources: [raw/specs/california-transit-database-original.md, raw/specs/gtfs-sche
 confidence: high
 ---
 
-# Evan Siroky
-
 ## Role
 Data product owner for multiple core DDS data products.
 

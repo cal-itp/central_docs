@@ -10,8 +10,6 @@ sources: [raw/presentations/data-governance-fundamentals-2026-05-01.md]
 confidence: high
 ---
 
-# Data Governance Framework
-
 The framework presented by Jarvus Innovations (Session 1, May 2026) establishing
 the "what" of data governance for Caltrans DDS.
 

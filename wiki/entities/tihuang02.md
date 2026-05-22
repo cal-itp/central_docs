@@ -10,8 +10,6 @@ sources: [raw/issues/data-infra-5109-archiver-sla.md]
 confidence: medium
 ---
 
-# tihuang02 (Daniel)
-
 ## Role
 (TBD) — Caltrans DDS / Cal-ITP
 

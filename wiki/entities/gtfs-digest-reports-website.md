@@ -10,8 +10,6 @@ sources: [raw/issues/data-infra-5317-product-docs-epic.md, raw/presentations/dat
 confidence: low
 ---
 
-# GTFS Digest / Reports Website
-
 ## Owner
 (TBD)
 

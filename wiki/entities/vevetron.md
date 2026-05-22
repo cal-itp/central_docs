@@ -10,8 +10,6 @@ sources: [raw/issues/data-infra-5109-archiver-sla.md]
 confidence: medium
 ---
 
-# vevetron
-
 ## Role
 RDS 3 — Caltrans DDS / Cal-ITP
 

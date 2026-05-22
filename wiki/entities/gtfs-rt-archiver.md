@@ -10,8 +10,6 @@ sources: [raw/issues/data-infra-5317-product-docs-epic.md, raw/issues/data-infra
 confidence: medium
 ---
 
-# GTFS-RT Archiver
-
 ## Owner
 [[vevetron]], [[tihuang02]]
 
@@ -95,10 +93,7 @@ met, and coordination with ADSD's existing processes.
 - 2026-05-18: vevetron: "Make a product sheet, set up thresholds, and get it back to ADSD"
 
 ## Quality
-- (TBD — quality monitoring for the current Cloud Functions implementation not
-  documented in repo.)
-- The older v3 implementation had Prometheus metrics and Grafana alerts (minimum task
-  successes, expiring tasks) plus Sentry error reporting.
+- (TBD)
 
 ## Operations
 - **Monitoring:** Built into Google Cloud — the archiver is observed through

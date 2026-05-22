@@ -10,8 +10,6 @@ sources: [raw/presentations/data-product-lifecycle-2026-05-07.md]
 confidence: high
 ---
 
-# Data Product Lifecycle
-
 The framework presented by Jarvus Innovations (Session 2, May 2026) for
 operationalizing data governance through product management. The core insight:
 design the workflow so the proof of governance is produced as the work happens.

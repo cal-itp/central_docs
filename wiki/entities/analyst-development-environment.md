@@ -10,8 +10,6 @@ sources: [raw/issues/data-infra-5317-product-docs-epic.md]
 confidence: low
 ---
 
-# Analyst Development Environment
-
 ## Owner
 (TBD)
 

@@ -10,8 +10,6 @@ sources: [raw/specs/gtfs-schedule-data-quality-original.md, raw/issues/data-infr
 confidence: high
 ---
 
-# GTFS Schedule Data Quality
-
 ## Owner
 [[evan-siroky]]
 
