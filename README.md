@@ -125,15 +125,19 @@ npm run index    # regenerate wiki/index.md from page frontmatter
 **Preview locally:**
 
 ```bash
-cd quartz && npm install
-node quartz/bootstrap-cli.mjs build -d ../wiki --serve
+scripts/build-site.sh --serve
 ```
+
+Quartz is not vendored into this repo — `scripts/build-site.sh` clones it
+(pinned version) into a gitignored `quartz/` directory on first run, overlays
+`quartz.config.ts`, then builds and serves. To upgrade Quartz, bump the version
+in that script and delete the local `quartz/`.
 
 ## How it deploys
 
-Push to `main` → GitHub Actions lints the wiki → builds Quartz → deploys to
-GitHub Pages. A lint failure (bad frontmatter, broken link, stale index) blocks
-the deploy.
+Push to `main` → GitHub Actions lints the wiki → builds the site (Quartz cloned
+fresh) → deploys to GitHub Pages. A lint failure (bad frontmatter, broken link,
+stale index) blocks the deploy.
 No manual build step needed.
 
 ## Related
