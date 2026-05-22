@@ -1,11 +1,8 @@
 # Quartz build output
 public/
 
-# Node modules
-quartz/node_modules/
-
-# Quartz own documentation (not our content)
-quartz/docs/
+# Quartz is cloned fresh at build time (scripts/build-site.sh) — not vendored
+quartz/
 
 # OS files
 .DS_Store
