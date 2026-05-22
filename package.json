@@ -1,0 +1,12 @@
+{
+  "name": "central-docs",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "DDS team knowledge base — wiki tooling (lint + index generation).",
+  "scripts": {
+    "lint": "node scripts/lint.mjs",
+    "index": "node scripts/build-index.mjs",
+    "index:check": "node scripts/build-index.mjs --check",
+    "check": "node scripts/build-index.mjs --check && node scripts/lint.mjs"
+  }
+}

@@ -1,0 +1,28 @@
+# Quartz build output
+public/
+
+# Node modules
+quartz/node_modules/
+
+# Quartz own documentation (not our content)
+quartz/docs/
+
+# OS files
+.DS_Store
+
+# Secrets
+.env
+
+# Obsidian workspace state (local paths)
+.obsidian/workspace.json
+
+# Large binary reference files (not needed for the deployed wiki)
+# Source documents are converted to markdown in wiki/raw/ — the markdown is
+# the committed source of truth; the binary originals stay local only.
+*.pptx
+*.docx
+*.zip
+*.vtt
+
+# One-off scripts
+_extract_pptx.py
