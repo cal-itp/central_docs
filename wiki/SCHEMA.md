@@ -66,6 +66,11 @@ description: Brief description
 Choose the template that fits the entity. Sections marked (TBD) can be left as
 placeholders.
 
+Ready-to-insert versions of every canvas below live in `wiki/templates/`, wired
+to Obsidian's **Templates** plugin (command palette → *Insert template*). Each
+already carries the required frontmatter and section headings — start there rather
+than copying the outlines by hand.
+
 ### Data Product Canvas
 For pipelines, quality checks, dashboards, and warehouse components.
 
