@@ -1,16 +1,15 @@
 # central_docs
 
 The DDS team knowledge base — products, services, processes, people, and
-frameworks. Built as an [LLM Wiki], rendered as a searchable website with [Quartz].
+frameworks. A linked wiki, rendered as a searchable website with [Quartz].
 
-[LLM Wiki]: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 [Quartz]: https://quartz.jzhao.xyz
 
 ## What this is
 
-A compounding wiki maintained by humans and LLMs together. Humans curate sources
-and direct analysis. The LLM summarizes, cross-references, files, and keeps
-everything current — the bookkeeping humans abandon.
+A compounding wiki the team maintains together. Contributors curate sources and
+direct the analysis; the wiki's job is to summarize, cross-reference, file, and
+keep everything current — the bookkeeping that otherwise gets abandoned.
 
 Pages are interlinked with `[[wikilinks]]`. Dependencies, ownership, and
 relationships are always one click away. The graph view shows how everything
@@ -33,8 +32,8 @@ material in `wiki/raw/`.
 
 ## Contributing
 
-The same protocol applies whether the contributor is a person or an AI agent.
-Every change goes through the same path: source → wiki pages → index → commit.
+The same protocol applies to every contributor. Every change goes through the
+same path: source → wiki pages → index → commit.
 
 ### Protocol
 
@@ -68,7 +67,7 @@ Every change goes through the same path: source → wiki pages → index → com
 7. Commit (the commit message is the changelog entry)
 ```
 
-### Ingesting a source (human or AI)
+### Ingesting a source
 
 When new information arrives — a meeting transcript, a GitHub issue, a document:
 
@@ -85,9 +84,10 @@ When new information arrives — a meeting transcript, a GitHub issue, a documen
 8. Commit (the commit message is the changelog entry)
 ```
 
-### AI agent prompt
+### Ingestion brief
 
-To have an AI agent contribute, give it this prompt plus the source:
+A reusable brief that captures the whole ingestion task in one place — hand it,
+plus the source, to whoever (or whatever) is doing the write-up:
 
 > Read `wiki/SCHEMA.md` and `wiki/index.md`. Ingest the following source into
 > the wiki. Extract entities, ownership, dependencies, SLAs, and lifecycle info.
@@ -112,6 +112,15 @@ index is current — failing the same checks CI enforces on push:
 **Edit:** Open in [Obsidian] as a vault, or edit markdown directly. Follow the
 conventions in `wiki/SCHEMA.md`. See [Contributing](#contributing) for the full
 protocol.
+
+Starter templates for every page type live in `wiki/templates/` and are wired to
+Obsidian's built-in **Templates** plugin. To add a page by hand: create the note
+in the right folder (`wiki/entities/`, `wiki/concepts/`, or `wiki/comparisons/`),
+then run the command palette's **Templates: Insert template** and pick the canvas
+that fits (data product, service, process, team resource, person, concept, or
+comparison). The template fills in the required frontmatter and section headings —
+replace the placeholders, delete the `%% ... %%` hints, add your `[[wikilinks]]`,
+then `npm run index` and `npm run check`.
 
 [Obsidian]: https://obsidian.md
 
@@ -142,5 +151,5 @@ No manual build step needed.
 
 ## Related
 
-- [Karpathy's LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
-- [Quartz](https://quartz.jzhao.xyz)
+- [Quartz](https://quartz.jzhao.xyz) — the static-site generator that renders the wiki
+- [Obsidian](https://obsidian.md) — recommended editor; opens this repo as a vault
