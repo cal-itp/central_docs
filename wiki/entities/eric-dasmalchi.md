@@ -19,5 +19,7 @@ Transit Data Scientist, Data Science.
 ## Owns
 - [[ca-transit-routes-stops]]
 
+# Doesn't Own
+* [[gtfs-digest-reports-website]]
 ## Contact
 (Optional) Email, Slack.
