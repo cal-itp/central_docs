@@ -23,6 +23,7 @@
 - [[ridership-data-collection]] — Pipeline collecting ridership data from agencies
 
 ### People
+- [[eric-dasmalchi]] — Owner of California Transit Routes and Stops
 - [[evan-siroky]] — Owner of California Transit Database, Schedule Data Quality, and Realtime Data Quality
 - [[tihuang02]] — (Daniel) Co-owner of GTFS-RT Archiver
 - [[vevetron]] — Co-owner of GTFS-RT Archiver
