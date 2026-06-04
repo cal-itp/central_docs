@@ -3,7 +3,7 @@ title: {{title}}
 summary: One-line summary — used verbatim in the generated index
 created: {{date:YYYY-MM-DD}}
 updated: {{date:YYYY-MM-DD}}
-type: person
+type: entity
 subtype: person
 tags: [person, owner]
 sources: []

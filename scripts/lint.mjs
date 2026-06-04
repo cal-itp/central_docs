@@ -11,7 +11,10 @@ import { listPages, WIKI_DIR, DATE_RE } from './wiki.mjs';
 // contributors supply it. When present it's still validated against the list
 // below; templates ship `confidence: low` so most pages set it anyway.
 const REQUIRED_KEYS = ['title', 'created', 'updated', 'type', 'summary', 'sources'];
-const TYPES = ['entity', 'concept', 'comparison', 'query', 'person'];
+// People are modeled as entities with `subtype: person` (so they land in the
+// index's People section, which is built from entity subtypes) — `person` is
+// not a top-level type.
+const TYPES = ['entity', 'concept', 'comparison', 'query'];
 const SUBTYPES = ['data-product', 'service', 'process', 'team-resource', 'vendor', 'person', 'framework'];
 const CONFIDENCE = ['high', 'medium', 'low'];
 const MIN_OUTBOUND_LINKS = 1;

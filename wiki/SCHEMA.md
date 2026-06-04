@@ -30,7 +30,7 @@ title: Page Title
 summary: One-line summary — used verbatim in the generated index
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-type: entity | concept | comparison | query | person
+type: entity | concept | comparison | query
 subtype: data-product | service | process | team-resource | vendor | person | framework
 tags: [from taxonomy below]
 sources: [raw/presentations/source.md]
