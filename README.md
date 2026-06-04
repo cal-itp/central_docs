@@ -33,7 +33,8 @@ material in `wiki/raw/`.
 ## Contributing
 
 The same protocol applies to every contributor. Every change goes through the
-same path: source → wiki pages → index → commit.
+same path: source → wiki pages → commit. The index is regenerated for you on
+push (see below) — you never have to touch it.
 
 ### Protocol
 
@@ -45,15 +46,14 @@ same path: source → wiki pages → index → commit.
    `wiki/entities/`. Concepts are free-form but need frontmatter and live in
    `wiki/concepts/` (e.g. frameworks like data governance). Cross-entity
    comparisons go in `wiki/comparisons/`.
-3. **Cross-reference.** Every new or updated page must link to at least 2 other
-   pages via `[[wikilinks]]`. Existing pages that should link to the new one must
-   be updated too.
-4. **Regenerate the index.** `wiki/index.md` is generated from page frontmatter —
-   never edit it by hand. Run `npm run index` after adding or renaming a page.
-   The one-line index entry comes from each page's `summary:` frontmatter field.
-5. **Commit.** One commit per logical change, with a message describing what
+3. **Cross-reference.** Every new or updated page must link to at least 1 other
+   page via `[[wikilinks]]` (2+ is better — the graph is the point). Update
+   existing pages that should link to the new one too, so it isn't an orphan.
+4. **Commit.** One commit per logical change, with a message describing what
    changed and why — git history is the wiki's changelog. Push triggers a site
-   rebuild.
+   rebuild, and CI regenerates `wiki/index.md` from page frontmatter and commits
+   it back — never edit the index by hand. (To preview it locally, `npm run
+   index`; the one-line entry comes from each page's `summary:` field.)
 
 ### Adding a new entity
 
@@ -62,9 +62,8 @@ same path: source → wiki pages → index → commit.
 2. Create the page in wiki/entities/ (lowercase, hyphens, .md)
 3. Fill in the template sections — use (TBD) for unknowns
 4. Add [[wikilinks]] from any related pages
-5. Regenerate the index — npm run index
-6. Verify — npm run check
-7. Commit (the commit message is the changelog entry)
+5. Verify — npm run check
+6. Commit (CI regenerates the index; the commit message is the changelog entry)
 ```
 
 ### Ingesting a source
@@ -79,9 +78,8 @@ When new information arrives — a meeting transcript, a GitHub issue, a documen
 4. Add new pages if the source introduces new entities
 5. If new info contradicts existing content, note both claims
    and flag the contradiction in frontmatter
-6. Regenerate the index for any new pages — npm run index
-7. Verify — npm run check
-8. Commit (the commit message is the changelog entry)
+6. Verify — npm run check
+7. Commit (CI regenerates the index; the commit message is the changelog entry)
 ```
 
 ### Ingestion brief
@@ -92,18 +90,21 @@ plus the source, to whoever (or whatever) is doing the write-up:
 > Read `wiki/SCHEMA.md` and `wiki/index.md`. Ingest the following source into
 > the wiki. Extract entities, ownership, dependencies, SLAs, and lifecycle info.
 > Update every affected page with `[[wikilinks]]`. Add new pages if needed.
-> Regenerate the index with `npm run index` and run `npm run check` to verify.
+> Run `npm run check` to verify (CI regenerates the index on push).
 > Do not commit — I'll review first.
 
 ### Quality checks
 
-Run `npm run check` before committing. It lints every page and verifies the
-index is current — failing the same checks CI enforces on push:
+Run `npm run check` before committing. It lints every page — the same check CI
+enforces on push:
 - Required frontmatter present (`title`, `summary`, `created`, `updated`,
-  `type`, `sources`, `confidence`) with valid values
-- Every page links to at least 2 others, with no broken `[[wikilinks]]`
+  `type`, `sources`) — keys must exist; `sources: []` is allowed. `confidence`
+  is optional (defaults to `low`)
+- Every page links to at least 1 other, with no broken `[[wikilinks]]`
 - No orphan pages (every page has at least one inbound link)
-- `wiki/index.md` matches what `npm run index` would generate
+
+`wiki/index.md` is regenerated and committed by CI on push, so it's not part of
+the local check — you never edit or regenerate it by hand.
 
 ## How to use
 
@@ -118,17 +119,19 @@ Obsidian's built-in **Templates** plugin. To add a page by hand: create the note
 in the right folder (`wiki/entities/`, `wiki/concepts/`, or `wiki/comparisons/`),
 then run the command palette's **Templates: Insert template** and pick the canvas
 that fits (data product, service, process, team resource, person, concept, or
-comparison). The template fills in the required frontmatter and section headings —
-replace the placeholders, delete the `%% ... %%` hints, add your `[[wikilinks]]`,
-then `npm run index` and `npm run check`.
+comparison). The template fills in the required frontmatter and section headings.
+Example links in the templates are shown as inline `` `[[code]]` `` so inserting a
+template never creates stray empty pages — replace them with real `[[wikilinks]]`
+(no backticks). Then delete the `%% ... %%` hints and run `npm run check`. CI
+regenerates the index on push, so there's no index step.
 
 [Obsidian]: https://obsidian.md
 
 **Check your changes** (no dependencies — needs only Node):
 
 ```bash
-npm run check    # lint every page + verify the index is current
-npm run index    # regenerate wiki/index.md from page frontmatter
+npm run check    # lint every page (frontmatter, wikilinks, orphans)
+npm run index    # optional — preview wiki/index.md locally (CI does this on push)
 ```
 
 **Preview locally:**
@@ -144,10 +147,10 @@ in that script and delete the local `quartz/`.
 
 ## How it deploys
 
-Push to `main` → GitHub Actions lints the wiki → builds the site (Quartz cloned
-fresh) → deploys to GitHub Pages. A lint failure (bad frontmatter, broken link,
-stale index) blocks the deploy.
-No manual build step needed.
+Push to `main` → GitHub Actions lints the wiki → regenerates `wiki/index.md` and
+commits it back if it changed → builds the site (Quartz cloned fresh) → deploys
+to GitHub Pages. A lint failure (bad frontmatter, broken link, orphan page)
+blocks the deploy. No manual build or index step needed.
 
 ## Related
 

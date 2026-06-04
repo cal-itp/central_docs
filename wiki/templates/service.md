@@ -12,11 +12,11 @@ confidence: low
 
 %% Service Canvas — tools, platforms, support services.
    Fill in each section; leave (TBD) where unknown. Link to at least 2 other pages
-   with [[wikilinks]], and add a link back from each page you reference. Delete these
+   with `[[wikilinks]]`, and add a link back from each page you reference. Delete these
    %% comment blocks before saving. %%
 
 ## Owner
-[[person-page]] — named person or team. Link to their page.
+`[[person-page]]` — named person or team. Link to their page.
 
 ## Description
 What the service does, who uses it.
@@ -28,10 +28,10 @@ How to get access. Who approves. (TBD)
 Uptime, availability, support hours. (TBD)
 
 ## Consumers
-Teams and people who rely on it. Link with [[wikilinks]].
+Teams and people who rely on it. Link with `[[wikilinks]]`.
 
 ## Dependencies
-Infrastructure and platforms it runs on. Link with [[wikilinks]].
+Infrastructure and platforms it runs on. Link with `[[wikilinks]]`.
 
 ## Operations
 Runbook, monitoring, alert routing. (TBD)

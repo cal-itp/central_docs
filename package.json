@@ -7,6 +7,6 @@
     "lint": "node scripts/lint.mjs",
     "index": "node scripts/build-index.mjs",
     "index:check": "node scripts/build-index.mjs --check",
-    "check": "node scripts/build-index.mjs --check && node scripts/lint.mjs"
+    "check": "node scripts/lint.mjs"
   }
 }
