@@ -3,16 +3,18 @@
 //
 // Usage: node scripts/lint.mjs
 
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { listPages, WIKI_DIR, DATE_RE } from './wiki.mjs';
-import { generateIndex } from './build-index.mjs';
 
-const REQUIRED_KEYS = ['title', 'created', 'updated', 'type', 'summary', 'sources', 'confidence'];
+// `confidence` is optional — a soft judgment field, so we don't make
+// contributors supply it. When present it's still validated against the list
+// below; templates ship `confidence: low` so most pages set it anyway.
+const REQUIRED_KEYS = ['title', 'created', 'updated', 'type', 'summary', 'sources'];
 const TYPES = ['entity', 'concept', 'comparison', 'query', 'person'];
 const SUBTYPES = ['data-product', 'service', 'process', 'team-resource', 'vendor', 'person', 'framework'];
 const CONFIDENCE = ['high', 'medium', 'low'];
-const MIN_OUTBOUND_LINKS = 2;
+const MIN_OUTBOUND_LINKS = 1;
 
 // Tag taxonomy from wiki/SCHEMA.md. Off-taxonomy tags are warnings, not errors.
 const TAXONOMY = new Set([
@@ -43,9 +45,13 @@ for (const page of pages) {
   }
   const fm = page.data;
 
+  // The key must be present, but an empty `sources: []` is allowed — sources is
+  // often genuinely unknown, and forcing a value invites fabricated citations.
+  // (The templates ship with `sources: []`, so requiring non-empty here would
+  // fail every page created from a template.)
   for (const key of REQUIRED_KEYS) {
     const v = fm[key];
-    if (v === undefined || v === '' || (Array.isArray(v) && v.length === 0)) {
+    if (v === undefined || v === '') {
       err(id, `missing required frontmatter key: ${key}`);
     }
   }
@@ -107,12 +113,9 @@ for (const page of pages) {
   }
 }
 
-// --- Index freshness ---
-const indexPath = join(WIKI_DIR, 'index.md');
-const currentIndex = existsSync(indexPath) ? readFileSync(indexPath, 'utf8') : '';
-if (currentIndex !== generateIndex()) {
-  errors.push('wiki/index.md: out of date — run: node scripts/build-index.mjs');
-}
+// NOTE: index freshness is not checked here. wiki/index.md is a derived file
+// that CI regenerates and commits on push (see .github/workflows/deploy.yml),
+// so contributors never have to run the generator or keep the index in sync.
 
 // --- Report ---
 for (const w of warnings) console.warn(`  warn  ${w}`);

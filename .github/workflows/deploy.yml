@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # lets the build commit the regenerated wiki/index.md back
   pages: write
   id-token: write
 
@@ -26,8 +26,24 @@ jobs:
         with:
           node-version: 22
 
-      - name: Lint wiki (frontmatter, wikilinks, orphans, index freshness)
+      - name: Lint wiki (frontmatter, wikilinks, orphans)
         run: node scripts/lint.mjs
+
+      # The index is a derived file. Regenerate it from page frontmatter and
+      # commit it back so the repo copy is always current (Obsidian, GitHub, and
+      # agents reading the repo all rely on it). [skip ci] keeps this push from
+      # re-triggering the workflow. The build below uses the freshly generated
+      # file regardless of whether the commit/push succeeds.
+      - name: Regenerate index and commit if changed
+        run: |
+          node scripts/build-index.mjs
+          if ! git diff --quiet -- wiki/index.md; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add wiki/index.md
+            git commit -m "chore: regenerate wiki index [skip ci]"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
 
       - name: Build site (Quartz cloned fresh, not vendored)
         run: bash scripts/build-site.sh

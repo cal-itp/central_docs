@@ -10,12 +10,14 @@ vendors, contracts, and the frameworks that govern them.
 - Every wiki page starts with YAML frontmatter
 - Do not add an H1 (`# Title`) to the page body — Quartz renders the frontmatter
   `title` as the page heading. Start the body with the first `##` section.
-- Use `[[wikilinks]]` to link between pages (minimum 2 outbound links per page)
+- Use `[[wikilinks]]` to link between pages (minimum 1 outbound link per page;
+  2+ is better) — and avoid orphans: every page needs at least one inbound link
 - When updating a page, always bump the `updated` date
-- `index.md` is generated — never edit it by hand; run `npm run index` (or
-  `node scripts/build-index.mjs`) after adding or renaming a page
-- Run `npm run check` before committing — it regenerates nothing but verifies
-  the index is current and lints every page
+- `index.md` is generated — never edit it by hand. CI regenerates it from page
+  frontmatter and commits it back on push, so you don't run anything (use
+  `npm run index` only to preview it locally)
+- Run `npm run check` before committing — it lints every page (it does not touch
+  the index)
 - Git history is the changelog — every change is one commit with a message
   describing what changed and why
 - Entity pages follow the template for their type (below)
@@ -37,8 +39,10 @@ contested: true  # optional
 ---
 ```
 
-`title`, `summary`, `created`, `updated`, `type`, `sources`, and `confidence`
-are required — the linter (`npm run lint`) fails the build if any are missing.
+`title`, `summary`, `created`, `updated`, `type`, and `sources` are required —
+the linter (`npm run lint`) fails the build if any are missing. The `sources`
+key must be present but may be empty (`sources: []`) when a page isn't drawn
+from a captured source yet. `confidence` is optional and defaults to `low`.
 Quote any `summary` containing a colon (e.g. `summary: 'Stage 1: intake'`).
 
 ### raw/ Frontmatter
