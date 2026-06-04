@@ -11,7 +11,7 @@ confidence: low
 ---
 
 %% Person Page — someone who appears as an owner or steward of 1+ entities.
-   Link to at least 2 of the entities they own with \[[wikilinks]], and make sure
+   Link to at least 2 of the entities they own with `[[wikilinks]]`, and make sure
    each of those pages lists this person as Owner. Delete these %% comment blocks
    before saving. %%
 
@@ -19,8 +19,8 @@ confidence: low
 What they do at DDS.
 
 ## Owns
-- [[entity-they-own]]
-- [[another-entity]]
+- `[[entity-they-own]]`
+- `[[another-entity]]`
 
 ## Contact
 (Optional) Email, Slack.

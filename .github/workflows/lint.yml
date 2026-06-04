@@ -17,5 +17,5 @@ jobs:
         with:
           node-version: 22
 
-      - name: Lint wiki (frontmatter, wikilinks, orphans, index freshness)
+      - name: Lint wiki (frontmatter, wikilinks, orphans)
         run: node scripts/lint.mjs
