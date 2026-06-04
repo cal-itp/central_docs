@@ -4,13 +4,14 @@
 
 > Content catalog for Caltrans DDS.
 > Every wiki page listed under its type with a one-line summary.
-> Last updated: 2026-05-22 | Total pages: 16
+> Last updated: 2026-06-04 | Total pages: 18
 
 ## Entities
 
 ### Data Products
 - [[airtable-download-parse]] — Pipeline downloading Airtable data into the warehouse
 - [[analyst-development-environment]] — Analytics environment for DDS analysts
+- [[ca-transit-routes-stops]] — Publishes a stable reference of CA transit routes and stops on the Open Data Portal
 - [[california-transit-database]] — Airtable catalog of California transit agencies, services, and GTFS feeds
 - [[dbt-data-processing]] — dbt transformation pipeline (staging → marts); tests currently off
 - [[gtfs-digest-reports-website]] — Reports website / GTFS Digest; potential merger with reports.dds
