@@ -113,6 +113,8 @@ index is current — failing the same checks CI enforces on push:
 conventions in `wiki/SCHEMA.md`. See [Contributing](#contributing) for the full
 protocol.
 
+Note that clicking some template links may create new pages, you may need to delete these if this happens.
+
 Starter templates for every page type live in `wiki/templates/` and are wired to
 Obsidian's built-in **Templates** plugin. To add a page by hand: create the note
 in the right folder (`wiki/entities/`, `wiki/concepts/`, or `wiki/comparisons/`),
