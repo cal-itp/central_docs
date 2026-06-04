@@ -3,7 +3,7 @@ title: Eric Dasmalchi
 summary: Owner of California Transit Routes and Stops
 created: 2026-06-04
 updated: 2026-06-04
-type: person
+type: entity
 subtype: person
 tags:
   - person
@@ -19,7 +19,8 @@ Transit Data Scientist, Data Science.
 ## Owns
 - [[ca-transit-routes-stops]]
 
-# Doesn't Own
-* [[gtfs-digest-reports-website]]
+## Doesn't Own
+- [[gtfs-digest-reports-website]]
+
 ## Contact
 (Optional) Email, Slack.
